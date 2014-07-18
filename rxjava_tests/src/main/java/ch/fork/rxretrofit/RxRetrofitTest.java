@@ -4,10 +4,8 @@ import retrofit.RestAdapter;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import rx.Observable;
-import rx.functions.Func1;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by fork on 15.07.14.
@@ -29,7 +27,7 @@ public class RxRetrofitTest {
 
         Observable<List<Repository>> repositories = gitHub.getUserRepositories("forkch");
 
-        repositories.flatMap(repositoryList -> Observable.from(repositoryList)).delay(10, TimeUnit.SECONDS).forEach(r -> System.out.println(r.getName()));
+        repositories.flatMap(repositoryList -> Observable.from(repositoryList)).forEach(r -> System.out.println(r.getName()));
 
     }
 
